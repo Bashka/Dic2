@@ -19,6 +19,7 @@ sub showMenu($){
     print 'b] Назад.'."\n";
   }
   print 'e] Редактировать.'."\n";
+  print 'u] Обновить.'."\n";
   print 'q] Выход.'."\n";
   print "\n";
 
@@ -86,6 +87,10 @@ do{
   elsif($cmd eq "e\n"){
     system(($ENV{'EDITOR'} || 'nano') . ' ' . 
            $home . $currentNode . ((-d $home . $currentNode)? '/node.dic2' : ''));
+  }
+  # Обновление библиотеки.
+  elsif($cmd eq "u\n"){
+    system('git pull');
   }
   # Выход из программы.
   elsif($cmd eq "q\n"){
