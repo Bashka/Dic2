@@ -17,11 +17,11 @@ expr - вычисления длины строки, поиск по строк�
 Пример
 ======
 
-  `echo `expr length 'Hello world'`;`
+    echo `expr length 'Hello world'`;
 
 Определение длины строки 'Hello world'.
 
-  `stringZ=abcABC123ABCabc;
-  echo `expr match "$stringZ" 'abc[A-Z]*.2'`;`
+    stringZ=abcABC123ABCabc;
+    echo `expr match "$stringZ" 'abc[A-Z]*.2'`;
 
 Определение длины совпадающей с regex подстроки: 8.

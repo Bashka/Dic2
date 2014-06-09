@@ -16,6 +16,6 @@ cut - получение подстрок и отдельных полей в м
 Пример
 ======
 
-  `cut -d: -f1-3,5 /etc/passwd;`
+    cut -d: -f1-3,5 /etc/passwd;
 
 Получить только поля: `username, passwd, UID, desc`.
