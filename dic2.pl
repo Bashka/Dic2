@@ -30,7 +30,7 @@ sub showMenu($){
     closedir(NODE);
     my $nodeIndex = 1;
     for my $subnode (@subnodes){
-      if($subnode ne '.' && $subnode ne '..' && $subnode ne 'node.dic2'){
+      if($subnode ne '.' && $subnode ne '..' && $subnode ne 'node.md'){
         $menu[$nodeIndex] = $_[0].'/'.$subnode;
 
         my $subnodeAddr = $home.$_[0].'/'.$subnode;
@@ -40,7 +40,7 @@ sub showMenu($){
         }
         else{
           # Печать элемента меню на основании содержимого описательного файла каталога или целевого файла.
-          $subnodeAddr = $subnodeAddr . '/node.dic2' if -d $subnodeAddr;
+          $subnodeAddr = $subnodeAddr . '/node.md' if -d $subnodeAddr;
           open(SUBNODE, '<:utf8', $subnodeAddr);
           print $nodeIndex++.'] '.<SUBNODE>;
           close(SUBNODE);
@@ -56,20 +56,24 @@ sub showMenu($){
 ##
 sub showNode($){
   my $nodeAddr = $home . $_[0];
-  $nodeAddr = $nodeAddr . '/node.dic2' if -d $nodeAddr;
+  $nodeAddr = $nodeAddr . '/node.md' if -d $nodeAddr;
   open(TEXTFILE, '<:utf8', $nodeAddr) or die('Невозможно открыть файл: '.$nodeAddr);
   <TEXTFILE>;
   print <TEXTFILE>;
   close(TEXTFILE);
-
-  print "\n".'---Меню---'."\n";
-  showMenu($_[0]);
 }
 
 # Определение начального узла.
 my $currentNode = 'library';
 if($#ARGV + 1 != 0){
-  $currentNode = $ARGV[0];
+  if($ARGV[0] eq '-r'){
+    $currentNode = $ARGV[1];
+    showNode($currentNode);
+    exit(0);
+  }
+  else{
+    $currentNode = $ARGV[0];
+  }
 }
 
 # Текущая команда.
@@ -77,6 +81,8 @@ my $cmd;
 do{
   system('clear');
   showNode($currentNode);
+  print "\n".'---Меню---'."\n";
+  showMenu($currentNode);
   print 'Выберите узел: ';
   $cmd = <STDIN>;
   # Возврат к предыдущему узлу.
@@ -86,7 +92,7 @@ do{
   # Редактирование текущего узла.
   elsif($cmd eq "e\n"){
     system(($ENV{'EDITOR'} || 'nano') . ' ' . 
-           $home . $currentNode . ((-d $home . $currentNode)? '/node.dic2' : ''));
+           $home . $currentNode . ((-d $home . $currentNode)? '/node.md' : ''));
   }
   # Обновление библиотеки.
   elsif($cmd eq "u\n"){
