@@ -34,17 +34,17 @@ sub showMenu($){
         $menu[$nodeIndex] = $_[0].'/'.$subnode;
 
         my $subnodeAddr = $home.$_[0].'/'.$subnode;
+        $subnodeAddr = $subnodeAddr . '/node.md' if -d $subnodeAddr;
+        open(SUBNODE, '<:utf8', $subnodeAddr);
         # Вставка переноса строки для файлов, имена которых [0-9]+_
         if($subnode =~ m/^[0-9]+_$/){
-          print "\n";
+          print "\n".<SUBNODE>;
         }
+        # Печать элемента меню на основании содержимого описательного файла каталога или целевого файла.
         else{
-          # Печать элемента меню на основании содержимого описательного файла каталога или целевого файла.
-          $subnodeAddr = $subnodeAddr . '/node.md' if -d $subnodeAddr;
-          open(SUBNODE, '<:utf8', $subnodeAddr);
           print $nodeIndex++.'] '.<SUBNODE>;
-          close(SUBNODE);
         }
+        close(SUBNODE);
       }
     }
   }
