@@ -20,13 +20,13 @@
 Данная прагма имеет следующие аргументы:
 
 * Обработчик сигнала - метод обработки сигнала:
-** `stack-trace` - вывод трасировки сигнала в STDERR;
-** `die` - завершение работы скрипта с выводом информации об ошибке в STDERR;
-** `handler <обработчик>` - использование пользовательской функции-обработчика сигнала.
+    * `stack-trace` - вывод трасировки сигнала в STDERR;
+    * `die` - завершение работы скрипта с выводом информации об ошибке в STDERR;
+    * `handler <обработчик>` - использование пользовательской функции-обработчика сигнала.
 * Список обрабатываемых сигналов - перечисление имен сигналов, обрабатываемых данным обработчиком. Сюда могут входить как имена сигналов, так и следующие группы:
-** normal-signals - HUP, INT, PIPE и TERM;
-** error-signals - ABRT, BUS, EMT, FPE, ILL, QUIT, SEGV, SYS и TRAP;
-** old-interface-signals - ABRT, BUS, EMT, FPE, ILL, PIPE, QUIT, SEGV, SYS, TERM, и TRAP.
+    * normal-signals - HUP, INT, PIPE и TERM;
+    * error-signals - ABRT, BUS, EMT, FPE, ILL, QUIT, SEGV, SYS и TRAP;
+    * old-interface-signals - ABRT, BUS, EMT, FPE, ILL, PIPE, QUIT, SEGV, SYS, TERM, и TRAP.
 
 Ниже приведен пример программы, завершающей работу при появлении сигнала INT:
 

@@ -35,55 +35,55 @@ warnings - вывод предупреждений
 По умолчанию Perl включает следующие категории предупреждений:
 
 * all
-** closure
-** deprecated
-** exiting
-** glob
-** io
-*** closed
-*** exec
-*** layer
-*** newline
-*** pipe
-*** unopened
-** imprecision
-** misc
-** numeric
-** once
-** overflow
-** pack
-** portable
-** recursion
-** redefine
-** regexp
-** severe
-*** debugging
-*** inplace
-*** internal
-*** malloc
-** signal
-** substr
-** syntax
-*** ambiguous
-*** bareword
-*** digit
-*** illegalproto
-*** parenthesis
-*** precedence
-*** printf
-*** prototype
-*** qw
-*** reserved
-*** semicolon
-** taint
-** threads
-** uninitialized
-** unpack
-** untie
-** utf8
-*** surrogate
-*** non_unicode
-*** nonchar
-** void
+    * closure
+    * deprecated
+    * exiting
+    * glob
+    * io
+        * closed
+        * exec
+        * layer
+        * newline
+        * pipe
+        * unopened
+    * imprecision
+    * misc
+    * numeric
+    * once
+    * overflow
+    * pack
+    * portable
+    * recursion
+    * redefine
+    * regexp
+    * severe
+        * debugging
+        * inplace
+        * internal
+        * malloc
+    * signal
+    * substr
+    * syntax
+        * ambiguous
+        * bareword
+        * digit
+        * illegalproto
+        * parenthesis
+        * precedence
+        * printf
+        * prototype
+        * qw
+        * reserved
+        * semicolon
+    * taint
+    * threads
+    * uninitialized
+    * unpack
+    * untie
+    * utf8
+        * surrogate
+        * non_unicode
+        * nonchar
+    * void
 
 Если категория не конкретизирована, используется категория `all`.
