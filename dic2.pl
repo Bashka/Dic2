@@ -1,6 +1,7 @@
 #!/usr/bin/perl
 use warnings;
 use strict;
+use autodie;
 use utf8;
 binmode(STDOUT, 'utf8');
 
@@ -57,7 +58,7 @@ sub showMenu($){
 sub showNode($){
   my $nodeAddr = $home . $_[0];
   $nodeAddr = $nodeAddr . '/node.md' if -d $nodeAddr;
-  open(TEXTFILE, '<:utf8', $nodeAddr) or die('Невозможно открыть файл: '.$nodeAddr);
+  open(TEXTFILE, '<:utf8', $nodeAddr);
   <TEXTFILE>;
   print <TEXTFILE>;
   close(TEXTFILE);
@@ -96,7 +97,7 @@ do{
   }
   # Обновление библиотеки.
   elsif($cmd eq "u\n"){
-    system('git pull');
+    system('cd ' . $home . ' && git pull');
   }
   # Выход из программы.
   elsif($cmd eq "q\n"){
