@@ -11,65 +11,65 @@ autodie - автоматическое завершение скрипта пр�
 Различаются следующие категории:
 
 * :all
-** :default
-*** :io
-**** read
-**** seek
-**** sysread
-**** sysseek
-**** syswrite
-**** :dbm
-***** dbmclose
-***** dbmopen
-**** :file
-***** binmode
-***** close
-***** fcntl
-***** fileno
-***** flock
-***** ioctl
-***** open
-***** sysopen
-***** truncate
-**** :filesys
-***** chdir
-***** closedir
-***** opendir
-***** link
-***** mkdir
-***** readlink
-***** rename
-***** rmdir
-***** symlink
-***** unlink
-**** :ipc
-***** ipe
-***** :msg
-****** msgctl
-****** msgget
-****** msgrcv
-****** msgsnd
-***** :semaphore
-****** semctl
-****** semget
-****** semop
-***** :shm
-****** shmctl
-****** shmget
-****** shmread
-**** :socket
-***** accept
-***** bind
-***** connect
-***** getsockopt
-***** listen
-***** recv
-***** send
-***** setsockopt
-***** shutdown
-***** socketpair
-*** :threads
-**** fork
-** :system
-*** system
-*** exec
+    * :default
+        * :io
+            * read
+            * seek
+            * sysread
+            * sysseek
+            * syswrite
+            * :dbm
+                * dbmclose
+                * dbmopen
+            * :file
+                * binmode
+                * close
+                * fcntl
+                * fileno
+                * flock
+                * ioctl
+                * open
+                * sysopen
+                * truncate
+            * :filesys
+                * chdir
+                * closedir
+                * opendir
+                * link
+                * mkdir
+                * readlink
+                * rename
+                * rmdir
+                * symlink
+                * unlink
+            * :ipc
+                * ipe
+                * :msg
+                    * msgctl
+                    * msgget
+                    * msgrcv
+                    * msgsnd
+                * :semaphore
+                    * semctl
+                    * semget
+                    * semop
+                * :shm
+                    * shmctl
+                    * shmget
+                    * shmread
+            * :socket
+                * accept
+                * bind
+                * connect
+                * getsockopt
+                * listen
+                * recv
+                * send
+                * setsockopt
+                * shutdown
+                * socketpair
+        * :threads
+            * fork
+    * :system
+        * system
+        * exec
