@@ -49,4 +49,42 @@
     XML:
     <?xml version="1.0" encoding="UTF-8"?>
     <root><foo>A</foo><bar>B</bar></root>
-    
+
+Создание XML схемы для данного пространства имен:
+
+    XSD:
+    <?xml version="1.0" encoding="UTF-8"?>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+               targetNamespace="http://my.com">
+      <xs:element name="root" type="xs:string"/>
+    </xs:schema>
+
+    XML:
+    <?xml version="1.0" encoding="UTF-8"?>
+    <root xmlns="http://my.com">Hell world</root>
+
+XML схема, разнесенная в несколько файлов:
+
+    Первый файл XSD:
+    <?xml version="1.0" encoding="UTF-8"?>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+               targetNamespace="http://my.com/myType">
+      <xs:complexType name="myType">
+        <xs:sequence>
+          <xs:element name="foo" type="xs:string"/>
+          <xs:element name="bar" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+
+    Второй файл XSD:
+    <?xml version="1.0" encoding="UTF-8"?>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+         xmlns:im="http://my.com/myType">
+      <xs:import schemaLocation="c.xsd" namespace="http://my.com/myType"/>
+      <xs:element name="root" type="im:myType"/>
+    </xs:schema>
+
+    XML:
+    <?xml version="1.0" encoding="UTF-8"?>
+    <root><foo>Hello</foo><bar>world</bar></root>
