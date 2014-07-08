@@ -32,3 +32,34 @@ XML схемы могут описывать следующие элементы
 * Атрибуты;
 * Простые типы данных (числа, строки и так далее);
 * Сложные типы данных (вложенные теги).
+
+Многофайловые XML схемы
+=======================
+
+Если XML схема получается слишком большая для одного файла, ее можно разбить на несколько. При этом все XML схемы должны реализовываться одинакого, а подключаться в другие схемы с помощью следующего тега:
+
+    <import schemaLocation="имяФайлаСхемы" namespace="пространствоИмен"/>
+
+Данная запись импортирует все элементы из "файла схемы" в данный файл под заданным "пространством имен". Подключаемая схема должна описывать указанное "пространство имен" с помощью атрибута 'targetNamespace' тега 'schema'.
+
+Ниже приведен пример подключаемой и подключающей схемы:
+
+    Подключаемая схема:
+    <?xml version="1.0" encoding="UTF-8"?>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+               targetNamespace="http://my.com/MyType">
+      <xs:complexType name="myType">
+        <xs:sequence>
+          <xs:element name="foo" type="xs:string"/>
+          <xs:element name="bar" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+   
+    Подключающая схема: 
+    <?xml version="1.0" encoding="UTF-8"?>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+         xmlns:im="http://my.com/MyType">
+      <xs:import schemaLocation="c.xsd" namespace="http://my.com/MyType"/>
+      <xs:element name="root" type="im:myType"/>
+    </xs:schema>
