@@ -7,6 +7,7 @@
     class Parent{
       protected $foo = 'Hello world';
     }
+    
     class Child extends Parent{
       public function getParentFoo(){
         return $this->foo;
@@ -23,11 +24,13 @@
         echo 'Parent';
       }
     }
+    
     class Child extends Parent{
       public function method(){
         echo 'Child';
       }
     }
+    
     $parent = new Parent();
     $parent->method(); // Parent - вызов метода родителя.
     $child = new Child();
@@ -40,11 +43,13 @@
         echo 'Parent';
       }
     }
+    
     class ChildA extends Parent{
       public function method(){
         parent::method(); // Доступ к методу прямого родителя.
       }
     }
+    
     class ChildB extends Parent{
       public function method(){
         Parent::method(); // Доступ к методу класса Parent.
@@ -59,6 +64,7 @@
     abstract class Parent{
       public abstract function method();
     }
+    
     class Child extends Parent{
       public function method(){
         // Реализация абстрактного метода.

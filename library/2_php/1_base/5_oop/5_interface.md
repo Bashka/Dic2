@@ -17,6 +17,7 @@
     interface Parent{
       public function foo();
     }
+    
     interface Child extends Parent{
       public function bar();
     }
@@ -30,13 +31,16 @@
     interface Parent{
       public function foo();
     }
+    
     interface Child extends Parent{
       public function bar();
     }
+    
     class My implements Child{
       public function foo(){
         echo 'Foo method';
       }
+      
       public function bar(){
         echo 'Bar method';
       }
@@ -62,15 +66,18 @@
         echo 'Foo method';
       }
     }
+    
     trait Bar{
       public function bar(){
         echo 'Bar method';
       }
     }
+     
     class My{
       use Foo;
       use Bar;
     }
+    
     $obj = new My();
     $obj->foo();
     $obj->bar();

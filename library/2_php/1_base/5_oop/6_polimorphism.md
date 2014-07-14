@@ -8,28 +8,35 @@
 
     interface Driver{
       public function connect();
+      
       public function query($SQL);
     }
+    
     class MySQL implements Driver{
       public function connect(){
         // ...
       }
+      
       public function query($SQL){
         // ...
       }
     }
+    
     class PostgreSQL implements Driver{
       public function connect(){
         // ...
       }
+      
       public function query($SQL){
         // ...
       }
     }
+    
     function sayQuery(Driver $driver, $SQL){
       $driver->connect();
       return $driver->query($SQL);
     }
+    
     $obj = new MySQL();
     sayQuery($obj); // Использование объекта класса MySQL.
     $obj = new PostgreSQL();

@@ -41,9 +41,9 @@
 
     class People{
       public $name;
-
+      
       public static $count = 0;
-
+      
       public function setName($name){
         $this->name = $name; // Установка значения свойству.
       }
