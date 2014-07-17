@@ -23,4 +23,4 @@ substr - получение подстроки
 
 Получение подстроки:
 
-    echo substr('Hello world', 7);
+    echo substr('Hello world', 6); // 'world'

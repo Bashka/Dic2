@@ -21,4 +21,4 @@ strlen - определение длины строки
 
 Определение длины строки:
 
-    echo strlen('Hello world');
+    echo strlen('Hello world'); // 11

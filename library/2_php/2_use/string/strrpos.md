@@ -23,4 +23,4 @@ strpos - поиск последнего вхождения подстроки
 
 Поиск подстроки:
 
-    echo strrpos('Hello world', 'l');
+    echo strrpos('Hello world', 'l'); // 9

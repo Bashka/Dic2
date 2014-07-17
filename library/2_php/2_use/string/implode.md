@@ -22,4 +22,4 @@ implode - объединение массива строк в строку
 
 Объединение слов в предложение:
 
-    echo explode(' ', ['Hello', 'world']);
+    echo implode(' ', ['Hello', 'world']); // 'Hello world'

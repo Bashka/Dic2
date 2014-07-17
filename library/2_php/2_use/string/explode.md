@@ -23,4 +23,4 @@ explode - разбиение строки в массив
 
 Разделение строки на слова:
 
-    echo explode(' ', 'Hello world');
+    echo explode(' ', 'Hello world'); // ['Hello', 'world']

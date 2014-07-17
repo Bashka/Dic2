@@ -22,4 +22,4 @@ trim - удаление пробельных символов с начала и
 
 Удаление пробелов:
 
-    echo trim('  Hello world  ');
+    echo trim('  Hello world  '); // 'Hello world'

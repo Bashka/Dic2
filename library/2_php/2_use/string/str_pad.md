@@ -24,4 +24,4 @@ str_pad - дополнение строки до указанной длины
 
 Дополнение строки слева пробелами:
 
-    echo str_pad('Hello world', 15, ' ', STR_PAD_LEFT);
+    echo str_pad('Hello world', 15, ' ', STR_PAD_LEFT); // '    Hello world'

@@ -23,4 +23,4 @@ strpos - поиск первого вхождения подстроки
 
 Поиск подстроки:
 
-    echo strpos('Hello world', 'world');
+    echo strpos('Hello world', 'world'); // 6
