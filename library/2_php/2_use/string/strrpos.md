@@ -1,4 +1,4 @@
-strpos - поиск последнего вхождения подстроки
+strrpos - поиск последнего вхождения подстроки
     int|bool strrpos(string haystack, string needle, [int offset])
 
 Описание
