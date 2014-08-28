@@ -21,11 +21,11 @@ Vundle
 2. Скопировать файлы плагина в этот каталог с помощью команды `git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle`;
 3. Добавить в файл настроек Vim (vimrc) следующие строки:
 
-    set nocompatible " Отключить режим совместимости с Vi
-    filetype off
-    set rtp+=~/.vim/bundle/vundle " Указываем путь к скрипту Vundle
-    call vundle#rc() " Запускаем Vundle
-    filetype plugin indent on
+      set nocompatible " Отключить режим совместимости с Vi
+      filetype off
+      set rtp+=~/.vim/bundle/vundle " Указываем путь к скрипту Vundle
+      call vundle#rc() " Запускаем Vundle
+      filetype plugin indent on
 
 После этого плагин готов к использованию.
 
