@@ -24,7 +24,9 @@ Vundle
         set nocompatible " Отключить режим совместимости с Vi
         filetype off
         set rtp+=~/.vim/bundle/vundle " Указываем путь к скрипту Vundle
-        call vundle#rc() " Запускаем Vundle
+        call vundle#begin() " Запускаем Vundle
+        " Здесь записываются все используемые плагины (команды Plugin)
+        call vundle#end() " Завершаем работу Vundle
         filetype plugin indent on
 
 После этого плагин готов к использованию.
@@ -41,11 +43,12 @@ Vundle
 
 Ниже приведен пример vimrc файла с указанием используемых плагинов:
 
-    ...
+    call vundle#begin() " Плагины должны указываться под данной записью
     Plugin 'tpope/vim-fugitive'
     Plugin 'L9'
     Plugin 'git://git.wincent.com/command-t.git'
     Plugin 'file:///home/gmarik/path/to/plugin'
+    call vundle#end() " Плагины должны указываться до данной записи
 
 После указания используемых плагинов, необходимо выполнить команду `:PluginInstall` в редакторе Vim. Эта команда установит все плагины, а так же обновит устаревшие. Vundle имеет следующие команды:
 
