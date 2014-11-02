@@ -27,7 +27,7 @@
 
 В результате компиляции такого файла, будет получена схема, изображенная на рисунке:
 
-![Ассоциация](storage/imgs/plantUML/assoc/assoc.png)
+![Ассоциация](storage/imgs/plantUML/classes/assoc/assoc.png)
 
 Классы-ассоциации
 =================
@@ -54,4 +54,4 @@
 
 В результате компиляции такого файла, будет получена схема, изображенная на рисунке:
 
-![Класс-ассоциация](storage/imgs/plantUML/assoc/class-assoc.png)
+![Класс-ассоциация](storage/imgs/plantUML/classes/assoc/class-assoc.png)

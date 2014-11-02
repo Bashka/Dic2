@@ -47,7 +47,7 @@
 
 В результате компиляции такого файла, будет получена схема, изображенная на рисунке:
 
-![Схема классов PlantUML](storage/imgs/plantUML/classes/class.png)
+![Схема классов PlantUML](storage/imgs/plantUML/classes/class/class.png)
 
 Для указания реализуемых классом интерфейсов можно использовать следующую запись:
 
@@ -61,7 +61,7 @@
 
 В результате компиляции такого файла, будет получена схема, изображенная на рисунке:
 
-![Реализация интерфейса](storage/imgs/plantUML/classes/implement.png)
+![Реализация интерфейса](storage/imgs/plantUML/classes/class/implement.png)
 
 Свойства класса
 ===============
@@ -96,7 +96,7 @@
 
 В результате компиляции такого файла, будет получена схема, изображенная на рисунке:
 
-![Свойства класса](storage/imgs/plantUML/classes/property.png)
+![Свойства класса](storage/imgs/plantUML/classes/class/property.png)
 
 Методы класса
 =============
@@ -127,7 +127,7 @@
 
 В результате компиляции такого файла, будет получена схема, изображенная на рисунке:
 
-![Методы класса](storage/imgs/plantUML/classes/method.png)
+![Методы класса](storage/imgs/plantUML/classes/class/method.png)
 
 Управление отображением тела класса
 ===================================
@@ -159,7 +159,7 @@
 
 В результате компиляции такого файла, будет получена схема, изображенная на рисунке:
 
-![Группы](storage/imgs/plantUML/classes/group.png)
+![Группы](storage/imgs/plantUML/classes/class/group.png)
 
 Модификаторы видимости
 ----------------------
