@@ -14,39 +14,35 @@ my @menu = ();
 # Функция формирует и выводит меню для узла.
 # @param string Адрес целевого узла в файловой системе.
 ##
-sub showMenu($){
+sub showMenu{
+  my ($path) = @_;
   @menu = ();
-  if($_[0] ne 'library'){
-    print 'b] Назад.'."\n";
-  }
-  print 'e] Редактировать.'."\n";
-  print 'u] Обновить.'."\n";
-  print 'q] Выход.'."\n";
-  print "\n";
+  print "b] Назад.\n" unless $path eq 'library';
+  print "e] Редактировать.\n";
+  print "u] Обновить.\n";
+  print "q] Выход.\n\n";
 
   # Формирования списка вложенных узлов только для каталога.
-  if(-d $home . $_[0]){
-    opendir(NODE, $home . $_[0]);
-    my @subnodes = sort(readdir(NODE));
+  if(-d $home . $path){
+    opendir(NODE, $home . $path);
+    my @subnodes = sort(grep { !/^(\.\.?|node\.md)$/ } readdir(NODE));
     closedir(NODE);
     my $nodeIndex = 1;
     for my $subnode (@subnodes){
-      if($subnode ne '.' && $subnode ne '..' && $subnode ne 'node.md'){
-        $menu[$nodeIndex] = $_[0].'/'.$subnode;
+      $menu[$nodeIndex] = $path.'/'.$subnode;
 
-        my $subnodeAddr = $home.$_[0].'/'.$subnode;
-        $subnodeAddr = $subnodeAddr . '/node.md' if -d $subnodeAddr;
-        open(SUBNODE, '<:utf8', $subnodeAddr);
-        # Вставка переноса строки для файлов, имена которых [0-9]+_
-        if($subnode =~ m/^[0-9]+_$/){
-          print "\n".<SUBNODE>;
-        }
-        # Печать элемента меню на основании содержимого описательного файла каталога или целевого файла.
-        else{
-          print $nodeIndex++.'] '.<SUBNODE>;
-        }
-        close(SUBNODE);
+      my $subnodeAddr = $home.$path.'/'.$subnode;
+      $subnodeAddr = $subnodeAddr . '/node.md' if -d $subnodeAddr;
+      open(SUBNODE, '<:utf8', $subnodeAddr);
+      # Вставка переноса строки для файлов, имена которых \d+_
+      if($subnode =~ m/^\d+_$/){
+        print "\n".<SUBNODE>;
       }
+      # Печать элемента меню на основании содержимого описательного файла каталога или целевого файла.
+      else{
+        print $nodeIndex++.'] '.<SUBNODE>;
+      }
+      close(SUBNODE);
     }
   }
 }
@@ -59,14 +55,13 @@ sub showNode($){
   my $nodeAddr = $home . $_[0];
   $nodeAddr = $nodeAddr . '/node.md' if -d $nodeAddr;
   open(TEXTFILE, '<:utf8', $nodeAddr);
-  <TEXTFILE>;
   print <TEXTFILE>;
   close(TEXTFILE);
 }
 
 # Определение начального узла.
 my $currentNode = 'library';
-if($#ARGV + 1 != 0){
+if(@ARGV){
   if($ARGV[0] eq '-r'){
     $currentNode = $ARGV[1];
     showNode($currentNode);
@@ -82,29 +77,30 @@ my $cmd;
 do{
   system('clear');
   showNode($currentNode);
-  print "\n".'---Меню---'."\n";
+  print "\n---Меню---\n";
   showMenu($currentNode);
   print 'Выберите узел: ';
-  $cmd = <STDIN>;
+  $cmd = <>;
+  chomp $cmd;
   # Возврат к предыдущему узлу.
-  if($cmd eq "b\n" || $cmd eq "\n"){
-    $currentNode =~ s/\/[A-Za-z0-9_.]+$//;
+  if($cmd eq 'b' || not $cmd){
+    $currentNode =~ s/\/[^\/]+$//;
   }
   # Редактирование текущего узла.
-  elsif($cmd eq "e\n"){
+  elsif($cmd eq 'e'){
     system(($ENV{'EDITOR'} || 'nano') . ' ' . 
            $home . $currentNode . ((-d $home . $currentNode)? '/node.md' : ''));
   }
   # Обновление библиотеки.
-  elsif($cmd eq "u\n"){
+  elsif($cmd eq 'u'){
     system('cd ' . $home . ' && git pull');
   }
   # Выход из программы.
-  elsif($cmd eq "q\n"){
+  elsif($cmd eq 'q'){
     exit 0;
   }
   # Выбор узла.
-  elsif($cmd =~ m/[0-9]/){
+  elsif($cmd =~ m/\d/ and exists($menu[$cmd])){
     $currentNode = $menu[$cmd];
   }
 }while(1);
